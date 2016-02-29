@@ -13,7 +13,16 @@ Cube::Cube() {
 
 bool Cube::collision(vec3 point)
 {
-
+    if(point.x > bounds.x/2.0f || point.x < -bounds.x/2.0f) {
+        return true;
+    }
+    if(point.y > bounds.y/2.0f || point.y < -bounds.y/2.0f) {
+        return true;
+    }
+    if(point.z > bounds.z/2.0f || point.z < -bounds.z/2.0f) {
+        return true;
+    }
+    return false;
 }
 
 void Cube::setBounds(vec3 bounds) {

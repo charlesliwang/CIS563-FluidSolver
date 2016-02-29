@@ -10,6 +10,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
+#include "../geom/geom.hpp"
 
 
 using namespace glm;
@@ -41,7 +42,7 @@ public:
     vector <vec4>*colors;
     vector <Particle> particles_id;
     float get_separation();
-    void update();
+    void update(Cube *cube);
 
 
 

@@ -51,12 +51,14 @@ void FluidSolver::create_particles() {
     }
 }
 
-void FluidSolver::update()
+void FluidSolver::update(Cube *cube)
 {
     for(int i = 0; i < particles->size(); i++) {
-        particles_id.at(i).vel += g;
-        particles->at(i) += vec3(0,particles_id.at(i).vel,0);
-        colors->at(i) += vec4(0,.3,0,1);
+        particles_id.at(i).vel += g/6000.0f;
+        particles->at(i) = particles->at(i) + vec3(0,particles_id.at(i).vel,0);
+        if(cube->collision(particles->at(i))) {
+            colors->at(i) = vec4(1.0f,0,0,1.0f);
+        }
     }
 
 }

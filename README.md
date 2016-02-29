@@ -14,3 +14,21 @@ Fluid Solver Submission guidelines:
 
 
 And you're done!
+
+
+README:
+Citation:
+base code for VBO/VAO/EBO indexing:
+http://www.learnopengl.com/#!Getting-started/Hello-Triangle
+ - Helped me understand how to properly set up a gl context
+this helped with understanding linking shaders with new attributes (color):
+http://learnopengl.com/#!Getting-started/Shaders
+ - Helped me understand binding buffers in a particular order
+
+Running the program will prompt you to enter the json to be used in this scene (file directory is relative to the executable).
+If you enter an invalid json, it will prompt you to enter the file again.
+All functionality was implemented.
+
+Interfacing:
+Arrow keys will rotate you around the origin
+Maya/Houdini mouse controls are also implemented (hold space + mouse drags)

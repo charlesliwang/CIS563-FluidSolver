@@ -14,10 +14,10 @@ void Scene::read_json() {
         string json_name = "";
 
         cout << "Please enter json directory: ";
-        //getline (cin, json_name);
+        getline (cin, json_name);
         Value root;
         Reader reader;
-        std::ifstream json_stream ("../CIS563-FluidSolver-master/src/scene/scene.json", std::ifstream::binary);
+        std::ifstream json_stream (json_name, std::ifstream::binary);
         if(reader.parse(json_stream,root,false)) {
             file_not_loaded = false;
             Value container_size = root.removeMember("containerDim");

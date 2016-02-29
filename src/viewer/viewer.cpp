@@ -251,10 +251,10 @@ int Viewer::create_window()
     float zoom_0;
     float theta_0;
     float phi_0;
+    int count = 0;
     while (!glfwWindowShouldClose(window))
     {
-        if( glfwGetKey(window, GLFW_KEY_R ) == GLFW_PRESS )
-            scene.fluid_solver->update();
+        scene.fluid_solver->update(scene.bounds);
         if( glfwGetKey(window, GLFW_KEY_LEFT ) == GLFW_PRESS )
             camera.theta -= 0.7;
         if( glfwGetKey(window, GLFW_KEY_RIGHT ) == GLFW_PRESS )
