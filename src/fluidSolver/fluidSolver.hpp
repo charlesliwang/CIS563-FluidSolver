@@ -23,17 +23,16 @@ private:
 public:
     Particle(int id);
     int id;
-    float vel;
+    vec3 vel;
 };
 
 class FluidSolver  {
 private:
+public:
     vec3 container_size;
     vec3 particles_size;
     float particle_separation;
     float g = -9.8;
-
-public:
     FluidSolver();
     FluidSolver(float cx, float cy, float cz, float px, float py, float pz, float separation);
     vec3 get_container_bounds();
@@ -48,6 +47,5 @@ public:
 
     void create_particles();
 };
-
 
 #endif /* fluidSolver_hpp */

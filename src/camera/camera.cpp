@@ -22,15 +22,15 @@ Camera::Camera(float width, float height) {
 void Camera::update_camera() {
     camera_position = vec3(rotate(mat4(1.0f),theta,vec3(0,1.0f,0)) * rotate(mat4(1.0f),phi,vec3(1.0f,0,0))
             * translate(mat4(1.0f),vec3(0,0,zoom)) * vec4(camera_target,1.0f));
-    camera_direction = camera_target - camera_position;
+    camera_direction = normalize(camera_target - camera_position);
 }
 
 mat4 Camera::viewproj_matrix() {
     vec3 world_up;
     if(phi >90 && phi< 270) {
-        world_up = vec3(0,-1,0);
+        world_up = vec3(0,-1.0f,0);
     } else {
-        world_up = vec3(0,1,0);
+        world_up = vec3(0,1.0f,0);
     }
     camera_right = normalize(cross(camera_direction,world_up));
     camera_up = normalize(cross(camera_right,camera_direction));

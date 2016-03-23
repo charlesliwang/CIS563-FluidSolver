@@ -86,6 +86,8 @@ set(CORE_SRC
         src/camera/camera.cpp
         src/viewer/viewer.cpp
         src/fluidSolver/fluidSolver.cpp
+        src/fluidSolver/flipsolver.cpp
+        src/fluidSolver/grid.cpp
         src/scene/scene.cpp
         src/geom/geom.cpp
 )

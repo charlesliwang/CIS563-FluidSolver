@@ -13,7 +13,6 @@ FluidSolver::FluidSolver(float cx, float cy, float cz, float px, float py, float
     particle_separation = separation;
     particles = new vector<vec3>();
     colors = new vector<vec4>();
-    std::cout << particle_separation << std::endl;
 }
 
 vec3 FluidSolver::get_container_bounds() {
@@ -36,13 +35,14 @@ void FluidSolver::create_particles() {
             float k = 0;
             while(k < particles_size.z){
                 particles->push_back(
-                            vec3(i - particles_size.x/2.0f,
-                                 j - particles_size.y/2.0f,
-                                 k - particles_size.z/2.0f));
-                particles_id.push_back(Particle(id));
-                colors->push_back(vec4(i - particles_size.x/2.0f,
-                                       j - particles_size.y/2.0f,
-                                       k - particles_size.z/2.0f, 1.0f));
+                            vec3(i - (particles_size.x/2.0f) + particle_separation/2.0f,
+                                 j - (particles_size.y/2.0f) + particle_separation/2.0f,
+                                 k - (particles_size.z/2.0f) + particle_separation/2.0f));
+                particles_id.push_back(Particle(id++));
+//                colors->push_back(vec4(i - particles_size.x/2.0f,
+//                                       j - particles_size.y/2.0f,
+//                                       k - particles_size.z/2.0f, 1.0f));
+                colors->push_back(vec4(1.0f,1.0f,1.0f,1.0f));
                 k += particle_separation;
             }
             j += particle_separation;
@@ -54,8 +54,8 @@ void FluidSolver::create_particles() {
 void FluidSolver::update(Cube *cube)
 {
     for(int i = 0; i < particles->size(); i++) {
-        particles_id.at(i).vel += g/6000.0f;
-        particles->at(i) = particles->at(i) + vec3(0,particles_id.at(i).vel,0);
+        //particles_id.at(i).vel += g/6000.0f;
+        particles->at(i) = particles->at(i) + particles_id.at(i).vel.y;
         if(cube->collision(particles->at(i))) {
             colors->at(i) = vec4(1.0f,0,0,1.0f);
         }
@@ -66,5 +66,5 @@ void FluidSolver::update(Cube *cube)
 Particle::Particle(int id)
 {
     this->id = id;
-    vel = 0;
+    vel = vec3(2.0f,0,0);
 }

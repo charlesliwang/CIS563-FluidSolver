@@ -75,7 +75,6 @@ int Viewer::create_window()
     glewInit();
 
     // Define the viewport dimensions
-    glViewport(0, 0, WIDTH, HEIGHT);
 
 
     // Build and compile our shader program
@@ -254,6 +253,11 @@ int Viewer::create_window()
     int count = 0;
     while (!glfwWindowShouldClose(window))
     {
+        int width = WIDTH;
+        int height = HEIGHT;
+        glfwGetFramebufferSize(window, &width, &height);
+        glViewport(0, 0, width, height);
+
         scene.fluid_solver->update(scene.bounds);
         if( glfwGetKey(window, GLFW_KEY_LEFT ) == GLFW_PRESS )
             camera.theta -= 0.7;
@@ -386,7 +390,6 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
 }
-
 
 
 
