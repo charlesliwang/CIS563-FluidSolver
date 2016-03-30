@@ -20,6 +20,8 @@
 #include "../scene/scene.hpp"
 #include "../camera/camera.hpp"
 
+#include <ctime>
+
 class Viewer {
     GLFWwindow* window;
 private:

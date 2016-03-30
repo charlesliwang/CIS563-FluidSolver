@@ -18,6 +18,23 @@ And you're done!
 
 README:
 
+SPRINT 2: 
+Running the program will prompt you to enter the json to be used in this scene (file directory is relative to the executable).
+If you enter an invalid json, it will prompt you to enter the file again.
+ALL REQUIRED FEATURES HAVE BEEN IMPLEMENTED
+
+notes:
+Time step: In the viewer class, the time step of the simulation can be adjusted by changing the value of float time_step on line 259
+Gravity: At each update, all values of the V grid have been reset to a small negative value (-2.0f);
+Update Particle Velocity: For this sprint I implemented forward Euler, rather than RK2.
+
+adjusted from last sprint:
+store_particle_velocity_to_grid:
+ - the velocity of each grid is scaled by the number of particles that influence it
+
+still probably somewhat broken:
+ - interpolation of velocity needs to be written cleaner
+
 SPRINT 1:
 
 Running the program will prompt you to enter the json to be used in this scene (file directory is relative to the executable).

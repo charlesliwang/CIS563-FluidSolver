@@ -251,14 +251,20 @@ int Viewer::create_window()
     float theta_0;
     float phi_0;
     int count = 0;
+    std::clock_t start;
+    start = std::clock();
     while (!glfwWindowShouldClose(window))
     {
+        double duration = (std::clock() - start)/(double) CLOCKS_PER_SEC;
+        float time_step = 0.1;
+        if(duration > time_step) {
+            start = std::clock();
+            scene.fluid_solver->update();
+        }
         int width = WIDTH;
         int height = HEIGHT;
         glfwGetFramebufferSize(window, &width, &height);
         glViewport(0, 0, width, height);
-
-        scene.fluid_solver->update(scene.bounds);
         if( glfwGetKey(window, GLFW_KEY_LEFT ) == GLFW_PRESS )
             camera.theta -= 0.7;
         if( glfwGetKey(window, GLFW_KEY_RIGHT ) == GLFW_PRESS )

@@ -33,9 +33,13 @@ void Scene::read_json() {
             bounds = new Cube();
             bounds->setBounds(fluid_solver->get_container_bounds());
             fluid_solver->init();
-            vec3 test = fluid_solver->mac_grid.gridP.get_position(4,2,3);
-            fluid_solver->store_particle_velocity_to_grid();
-            fluid_solver->mac_grid.check_grid_data();
+            //vec3 test = fluid_solver->mac_grid.gridP.get_position(4,2,3);
+//            fluid_solver->mac_grid.check_grid_data();
+//            fluid_solver->store_particle_velocity_to_grid();
+//            fluid_solver->update_grid_cell_types();
+//            fluid_solver->mac_grid.enforce_boundary_conditions();
+//            fluid_solver->mac_grid.extrapolate_velocities();
+//            fluid_solver->mac_grid.check_grid_data();
 //            vec3 test_pos(2.0f,0,0);
 //            vec3 test_interp = fluid_solver->interpolate_velocity(test_pos,fluid_solver->mac_grid);
 //            cout << test_interp.x << " " << test_interp.y << " " << test_interp.z << endl;

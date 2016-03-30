@@ -41,7 +41,7 @@ public:
     vector <vec4>*colors;
     vector <Particle> particles_id;
     float get_separation();
-    void update(Cube *cube);
+    void update_positions();
 
 
 
