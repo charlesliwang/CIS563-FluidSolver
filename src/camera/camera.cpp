@@ -13,10 +13,10 @@ Camera::Camera(float width, float height) {
     fovy = 45;
     near_clip = 0.0001;
     far_clip = 10000;
-    zoom = 20;
+    zoom = 13;
     camera_target = vec3(0,0,0);
-    phi = 0;
-    theta = 0;
+    phi = -10;
+    theta = 20;
 }
 
 void Camera::update_camera() {

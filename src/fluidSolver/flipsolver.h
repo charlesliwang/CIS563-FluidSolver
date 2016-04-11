@@ -4,6 +4,7 @@
 
 #include "fluidSolver.hpp"
 #include "grid.h"
+#include <Eigen/Sparse>
 
 using namespace std;
 
@@ -24,5 +25,9 @@ public:
     vec3 get_picflip_advect(int i);
     void update_particle_velocities();
     void update_particle_positions();
+    void pressure_solve();
+    void get_matrix_A();
+    void get_neg_div();
+    void update_colors();
 };
 #endif // FLIPSOLVER_H

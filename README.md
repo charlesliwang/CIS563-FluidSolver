@@ -18,6 +18,9 @@ And you're done!
 
 README:
 
+SPRINT 3:
+EVERYTHING IS THERE BUT DOESN'T REALLY WORK??
+
 SPRINT 2: 
 Running the program will prompt you to enter the json to be used in this scene (file directory is relative to the executable).
 If you enter an invalid json, it will prompt you to enter the file again.

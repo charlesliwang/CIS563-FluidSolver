@@ -13,8 +13,8 @@ void Scene::read_json() {
     while(file_not_loaded) {
         string json_name = "scene.json";
 
-        cout << "Please enter json directory: ";
-        getline (cin, json_name);
+//        cout << "Please enter json directory: ";
+//        getline (cin, json_name);
         Value root;
         Reader reader;
         std::ifstream json_stream (json_name, std::ifstream::binary);

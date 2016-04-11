@@ -9,6 +9,10 @@
 #include <vector>
 #include "../geom/geom.hpp"
 #include <math.h>
+#include <Eigen/Sparse>
+#include <Eigen/Core>
+#include <Eigen/Dense>
+#include <Eigen/IterativeLinearSolvers>
 
 using namespace std;
 
@@ -31,6 +35,8 @@ public:
     void replace(int i, int j, int k, float val);
     void clear_grid(float v);
     void save_old_data();
+    float interpolate(vec3 pos, vec3 grid_center, vec3 idx);
+    int grid_to_array(int i, int j, int k);
 };
 
 class MACGrid {
@@ -49,6 +55,7 @@ public:
     Grid oldW;
     Grid gridP;
     Grid gridType;
+    Grid gridDiv;
     float cell_width;
     void save_old_data();
     void velocity_to_grid(vec3 part_pos, vec3 part_vel);
@@ -60,7 +67,13 @@ public:
     void mark_fluid(vec3 pos);
     void enforce_boundary_conditions();
     void extrapolate_velocities();
-    void clear_grids_add_grav();
+    void clear_grids();
+    void add_grav();
+    Eigen::SparseMatrix<double> get_matrix_A();
+    Eigen::VectorXd get_neg_div();
+    void pressure_solve();
+    void set_solid_bounds();
+    void pressure_update();
 };
 
 

@@ -256,7 +256,7 @@ int Viewer::create_window()
     while (!glfwWindowShouldClose(window))
     {
         double duration = (std::clock() - start)/(double) CLOCKS_PER_SEC;
-        float time_step = 0.1;
+        double time_step = 0.1;
         if(duration > time_step) {
             start = std::clock();
             scene.fluid_solver->update();
